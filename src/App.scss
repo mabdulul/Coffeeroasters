@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Fraunces:wght@900&display=swap");
+
+$titlesFont: "Fraunces", serif;
+$accordion_font_color: #83888f;
+* {
+	box-sizing: border-box;
+}
+html {
+	font-size: 16px;
+	box-sizing: border-box;
+}
+
+p {
+	font-family: "Barlow", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: "Fraunces", serif;
+}
+
+.btn-clear {
+	outline: none;
+	border: none;
+	background-color: transparent;
+}
+
+.btn {
+	outline: none;
+	border: none;
+	max-width: 217px;
+	font-size: 1rem;
+	border-radius: 6px;
+	color: #fefcf7;
+
+	padding: 1em 5em;
+	font-family: "Fraunces", serif;
+}
+.btn-active {
+	background-color: #0e8784;
+}
+
+.btn-active:hover {
+	background-color: #66d2cf;
+}
+.btn-disabled {
+	background-color: #e2dedb;
+}
+
+[type="radio"] {
+	opacity: 0;
+}
+
+.accordion_btn::after {
+	content: url(./assets/plan/desktop/icon-arrow.svg);
+	transform: rotate(180deg);
+	display: inline-block;
+}
+
+.accordion__button--active::after {
+	content: url(./assets/plan/desktop/icon-arrow.svg);
+	transform: rotate(360deg);
+	display: inline-block;
+}
+
+.input-hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+/* Stuff after this is only to make things more pretty */
+input[type="radio"] + label > .accordion_groupContainer {
+	background: #f4f1eb;
+	max-width: 328px;
+	border-radius: 8px;
+	padding: 1.5rem;
+	transition: 500ms all;
+}
+input[type="radio"] + label > .accordion_groupContainer:hover {
+	background-color: #fdd6ba;
+}
+
+input[type="radio"]:checked + label > .accordion_groupContainer {
+	background: #0e8784;
+
+	.accordion_groupTitle {
+		color: white;
+	}
+	.accordion_groupText {
+		color: white;
+	}
+}
+
+.accordion {
+	.accordion_btn {
+		width: 95%;
+		margin: 0 auto;
+		font-family: $titlesFont;
+		font-size: 1.5rem;
+		color: $accordion_font_color;
+	}
+
+	.accordion__content {
+		transition: max-height 0.5s;
+		max-height: 0px;
+		overflow: hidden;
+	}
+
+	.accordion__content--open {
+		max-height: max-content;
+	}
+	.accordion_groupsWrapper {
+		display: grid;
+		grid-template-rows: 1fr 1fr 1fr;
+		justify-content: center;
+		row-gap: 1rem;
+	}
+	label .accordion_groupContainer {
+		max-width: 328px;
+
+		.accordion_groupTitle {
+			font-family: $titlesFont;
+			font-size: 1.5rem;
+		}
+		.accordion_groupText {
+		}
+	}
+}
+@media (min-width: 768px) {
+	input[type="radio"] + label > .accordion_groupContainer {
+		margin-right: 0.625rem;
+		padding: 2rem 1.563rem 5.25rem 1.563rem;
+	}
+	.accordion {
+		.accordion_groupsWrapper {
+			display: flex;
+			justify-content: center;
+
+			.accordion_groupText {
+				margin-top: 1.5rem;
+			}
+		}
+	}
+}
+
+.mystyle {
+	background-color: #0e8784;
+	color: blue;
+}
+
+@media (min-width: 992px) {
+	input[type="radio"] + label > .accordion_groupContainer {
+		margin-right: 0.625rem;
+		padding: 2rem 1.75rem 5.25rem 1.75rem;
+	}
+	.accordion {
+		.accordion_btn {
+			font-size: 2.5rem;
+		}
+		.accordion__content {
+			overflow: hidden;
+		}
+
+		.accordion__content--open {
+		}
+		.accordion_groupsWrapper {
+			.accordion_group {
+				width: 14.25rem;
+
+				.accordion_groupContainer {
+					margin-top: 2rem;
+					margin-right: 1.75rem;
+					margin-left: 1.75rem;
+					margin-bottom: 5.25rem;
+					padding: 0px;
+				}
+			}
+		}
+	}
+}
